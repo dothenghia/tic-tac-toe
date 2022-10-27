@@ -17,23 +17,39 @@ class Board extends React.Component {
         super(props);
         this.state = {
             squares : Array(9).fill(null),
+            xTurn : true,
         }
     }
 
     handleClick(index) {
         let newSquares = [...this.state.squares];
-        newSquares[index] = 'A';
-        this.setState({squares : newSquares});
+
+        if (winGame(newSquares) || newSquares[index]) {
+            return;
+        }
+
+        newSquares[index] = this.state.xTurn ? 'X' : 'O';
+        this.setState({
+            squares : newSquares,
+            xTurn : !this.state.xTurn,
+        });
+
     }
 
     render() {
-        let turn = 'Turn : A';
+        let gameStatus = winGame(this.state.squares);
+        let status;
+        if (gameStatus) {
+            status = 'Winner : ' + gameStatus;
+        } else {
+            status = 'Turn : ' + (this.state.xTurn ? 'X' : 'O');
+        }
         
         return (
             <React.Fragment>
                 <div class="row no-gutters">
                     <div id="status" class="col">
-                        <p>{turn}</p>
+                        <p>{status}</p>
                     </div>
                 </div>
 
@@ -78,6 +94,7 @@ class Footer extends React.Component {
     }
 }
 
+
 const App = (
     <React.Fragment>
         <Header/>
@@ -88,5 +105,28 @@ const App = (
 
 ReactDOM.render(App, root)
 
+// #d ===========================================
+
+function winGame(squares) {
+    let result = null;
+    let winLines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ]
+    
+    winLines.forEach((line)=>{
+        let [a, b, c] = line; // Get values by Destructuring
+        if ((squares[a]) && (squares[a] == squares[b]) && (squares[b] == squares[c])) {
+            result = squares[a];
+        }
+    })
+    return result;
+}
 
 
