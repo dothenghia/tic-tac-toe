@@ -1,0 +1,71 @@
+/* #d ------------ Header -------------- */
+#header {
+    background-color: rgb(151, 127, 109);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* #l ------------ Header -------------- */
+
+#status {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+/* #d ------------ Board -------------- */
+#board {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    width: calc(var(--square-width) * 3 + 8px);
+    max-width: calc(var(--square-width) * 3 + 8px);
+}
+
+#board .col {
+    width: var(--square-width);
+    max-width: var(--square-width);
+}
+
+.square {
+    background-color: rgb(121, 110, 192);
+    width: var(--square-width);
+    height: var(--square-width);
+    text-align: center;
+    line-height: var(--square-width);
+    border:rgb(31, 28, 26) solid 4px;
+    font-size: 30px;
+}
+#board .col:nth-child(3n + 1) .square{
+    border-left: rgb(31, 28, 26) solid 8px;
+}
+#board .col:nth-child(3n + 3) .square{
+    border-right: rgb(31, 28, 26) solid 8px;
+}
+#board .col:nth-child(1) .square,
+#board .col:nth-child(2) .square,
+#board .col:nth-child(3) .square {
+    border-top: rgb(31, 28, 26) solid 8px;
+}
+#board .col:nth-child(7) .square,
+#board .col:nth-child(8) .square,
+#board .col:nth-child(9) .square {
+    border-bottom: rgb(31, 28, 26) solid 8px;
+}
+
+.square:hover {
+    cursor: pointer;
+    background-color: rgb(190, 186, 211);
+}
+/* #l ------------ Board -------------- */
+
+
+/* #d ------------ Footer -------------- */
+#footer {
+    background-color: rgb(190, 182, 175);
+    width: 100%;
+    text-align: center;
+}
+/* #l ------------ Footer -------------- */

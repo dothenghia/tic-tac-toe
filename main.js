@@ -40,7 +40,11 @@ class Board extends React.Component {
         let gameStatus = winGame(this.state.squares);
         let status;
         if (gameStatus) {
-            status = 'Winner : ' + gameStatus;
+            if (gameStatus == 'Draw') {
+                status = 'Draw';
+            } else {
+                status = 'Winner : ' + gameStatus;
+            }
         } else {
             status = 'Turn : ' + (this.state.xTurn ? 'X' : 'O');
         }
@@ -126,7 +130,23 @@ function winGame(squares) {
             result = squares[a];
         }
     })
+    
+    if (!result) {
+        let notFull = squares.some((value)=>{
+            return (value == null);
+        })
+        if (!notFull) {
+            result = 'Draw';
+        }
+    }
+
     return result;
 }
 
+///// todo 1. Win Logic
+
+// todo 2. Reset game button
+// todo 4. Theme button
+// todo 3. Change color the win line
+// todo 5. Local storage score
 
