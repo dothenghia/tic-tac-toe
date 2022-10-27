@@ -54,18 +54,16 @@ class Board extends React.Component {
     }
 }
 
-class Square extends React.Component {
-    render() {
-        return (
-            <div className="col">
-                <button 
-                    className="square" 
-                    onClick={()=>{this.props.onClick()}}>
-                    {this.props.value}
-                </button>
-            </div>
-        )
-    }
+function Square(props) {
+    return (
+        <div className="col">
+            <button 
+                className="square" 
+                onClick={props.onClick}>
+                {props.value}
+            </button>
+        </div>
+    );
 }
 
 class Footer extends React.Component {
