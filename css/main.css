@@ -7,6 +7,12 @@
 }
 /* #l ------------ Header -------------- */
 
+#status {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
 
 /* #d ------------ Board -------------- */
 #board {

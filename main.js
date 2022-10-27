@@ -1,11 +1,5 @@
 let root = document.getElementById('root');
 
-let squareValue = [
-    1, 2, 3,
-    4, 5, 6,
-    8, 10, 12
-]
-
 class Header extends React.Component {
     render() {
         return (
@@ -19,47 +13,55 @@ class Header extends React.Component {
 }
 
 class Board extends React.Component {
-    // renderSquare(i) {
-    //     return (
-    //         <Square 
-    //             value={i}
-    //         />
-    //     )
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares : Array(9).fill(null),
+        }
+    }
+
+    handleClick(index) {
+        let newSquares = [...this.state.squares];
+        newSquares[index] = 'A';
+        this.setState({squares : newSquares});
+    }
+
     render() {
+        let turn = 'Turn : A';
+        
         return (
-            <div class="row no-gutters">
-                <div id="board">
-                    {
-                        squareValue.map((value)=>{
-                            return <Square
-                                        value = {value}
-                                    />
-                        })
-                    }
+            <React.Fragment>
+                <div class="row no-gutters">
+                    <div id="status" class="col">
+                        <p>{turn}</p>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row no-gutters">
+                    <div id="board">
+                        {
+                            this.state.squares.map((value, index)=>{
+                                return <Square
+                                            value = {value}
+                                            onClick = {() => this.handleClick(index)}
+                                        />
+                            })
+                        }
+                    </div>
+                </div>
+            </React.Fragment>
         )
     }
 }
 
-class Square extends React.Component { // Nhan props tu Board
-    constructor(props) {
-        super(props);
-        this.state = {
-            value : null,
-        }
-    }
-
+class Square extends React.Component {
     render() {
         return (
             <div className="col">
                 <button 
                     className="square" 
-                    onClick={()=>{
-                        this.setState({value : 'X'})
-                    }}>
-                    {this.state.value} 
+                    onClick={()=>{this.props.onClick()}}>
+                    {this.props.value}
                 </button>
             </div>
         )
