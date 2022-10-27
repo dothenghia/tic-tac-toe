@@ -1,0 +1,7 @@
+:root {
+    --white-color : #fff;
+
+    --square-width : 150px;
+    --board-width : calc(var(--square-width) * 3);
+
+}
