@@ -1,7 +1,6 @@
-
 /* #d ------------ Header -------------- */
 #header {
-    background-color: #c95a5a;
+    background-color: #ffffff;
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
@@ -31,7 +30,7 @@
 }
 
 .square {
-    background-color: #f8f8f8;
+    background-color: #fbfbfb;
     width: var(--square-width);
     height: var(--square-width);
     text-align: center;
@@ -58,14 +57,14 @@
 
 .square:hover {
     cursor: pointer;
-    background-color: rgb(212, 212, 212);
+    background-color: rgb(190, 186, 211);
 }
 /* #l ------------ Board -------------- */
 
 
 /* #d ------------ Footer -------------- */
 #footer {
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(190, 182, 175);
     width: 100%;
     text-align: center;
 }

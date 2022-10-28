@@ -6,6 +6,14 @@ class Header extends React.Component {
             <div className="row no-gutters">
                 <div id="header" className="col">
                     <p>Tic Tac Toe</p>
+                    <div className="button-wrap">
+                        <button className="button reset">
+                            <i className="fa-solid fa-rotate-right"></i>
+                        </button>
+                        <button className="button theme">
+                            <i className="fa-solid fa-circle-half-stroke"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         )
@@ -98,20 +106,16 @@ class Footer extends React.Component {
     }
 }
 
-class App extends React.Component {
-    render () {
-        return(
-            <React.Fragment>
-                <Header/>
-                <Board/>
-                <Footer/>
-            </React.Fragment>
-        )
-    };
-}
 
-ReactDOM.render(<App/>, root)
+const App = (
+    <React.Fragment>
+        <Header/>
+        <Board/>
+        <Footer/>
+    </React.Fragment>
+)
 
+ReactDOM.render(App, root)
 
 // #d ===========================================
 
@@ -148,12 +152,9 @@ function winGame(squares) {
 }
 
 ///// todo 1. Win Logic
-// Fix UI :
-//    - Background, Theme
-//    - Player score 
-//    - Modal result
-//    - Responsive
 
+// todo 2. Reset game button
+// todo 4. Theme button
 // todo 3. Change color the win line
 // todo 5. Local storage score
 
