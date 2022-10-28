@@ -1,3 +1,4 @@
+
 let root = document.getElementById('root');
 
 class Header extends React.Component {
@@ -5,7 +6,15 @@ class Header extends React.Component {
         return (
             <div className="row no-gutters">
                 <div id="header" className="col">
-                    <h1>HEADER</h1>
+                    <p>Tic Tac Toe</p>
+                    <div className="button-wrap">
+                        <button className="button reset">
+                            <i className="fa-solid fa-rotate-right"></i>
+                        </button>
+                        <button className="button theme">
+                            <i className="fa-solid fa-circle-half-stroke"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         )
@@ -51,13 +60,13 @@ class Board extends React.Component {
         
         return (
             <React.Fragment>
-                <div class="row no-gutters">
-                    <div id="status" class="col">
+                <div className="row no-gutters">
+                    <div id="status" className="col">
                         <p>{status}</p>
                     </div>
                 </div>
 
-                <div class="row no-gutters">
+                <div className="row no-gutters">
                     <div id="board">
                         {
                             this.state.squares.map((value, index)=>{

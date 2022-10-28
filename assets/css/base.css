@@ -1,6 +1,8 @@
 :root {
     --white-color : #fff;
 
+    --header-height : 80px;
+
     --square-width : 150px;
     --board-width : calc(var(--square-width) * 3);
 
