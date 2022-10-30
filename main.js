@@ -18,13 +18,16 @@ class Board extends React.Component {
         this.state = {
             squares : Array(9).fill(null),
             xTurn : true,
+            xGoFirst : true,
+            score1 : 0,
+            score2 : 0,
         }
     }
 
     handleClick(index) {
         let newSquares = [...this.state.squares];
 
-        if (winGame(newSquares) || newSquares[index]) {
+        if (gameState(newSquares) == 'X' || gameState(newSquares) == 'O' || newSquares[index]) {
             return;
         }
 
@@ -34,30 +37,64 @@ class Board extends React.Component {
             xTurn : !this.state.xTurn,
         });
 
+        // Update score
+        if (gameState(newSquares) == 'X') {
+            this.setState({
+                score1 : this.state.score1 + 1,
+                xGoFirst : true,
+            });
+        } else if (gameState(newSquares) == 'O') {
+            this.setState({
+                score2 : this.state.score2 + 1,
+                xGoFirst : false,
+            });
+        }
     }
 
     render() {
-        let gameStatus = winGame(this.state.squares);
+        let gameStatus = gameState(this.state.squares, this.state.xGoFirst);
         let status;
+        let score1_ = this.state.score1;
+        let score2_ = this.state.score2;
         if (gameStatus) {
-            if (gameStatus == 'Draw') {
-                status = 'Draw';
-            } else {
-                status = 'Winner : ' + gameStatus;
+            switch (gameStatus) {
+                case 1:
+                    status = 'X go first';
+                    break;
+                case 2:
+                    status = 'O go first';
+                    break;
+                case 'X':
+                    status = 'X win';
+                    // score1_ = score1_ + 1;
+                    break;
+                case 'O':
+                    status = 'O win';
+                    break;
+                default:
+                    console.log("Game status error");
+                    break;
             }
         } else {
-            status = 'Turn : ' + (this.state.xTurn ? 'X' : 'O');
+            status = (this.state.xTurn ? 'X' : 'O') + "'s turn";
         }
+        console.log(this.state)
         
         return (
             <React.Fragment>
-                <div class="row no-gutters">
-                    <div id="status" class="col">
+                <div className="row no-gutters">
+                    <div id="status" className="col">
                         <p>{status}</p>
                     </div>
                 </div>
 
-                <div class="row no-gutters">
+
+                <div className="row no-gutters game">
+                    <div id="player1" className="player">
+                        <h3>Player X</h3>
+                        <p id="score1">{this.state.score1}</p>
+                    </div>
+
                     <div id="board">
                         {
                             this.state.squares.map((value, index)=>{
@@ -67,6 +104,11 @@ class Board extends React.Component {
                                         />
                             })
                         }
+                    </div>
+
+                    <div id="player2" className="player">
+                        <h3>Player O</h3>
+                        <p id="score2">{this.state.score2}</p>
                     </div>
                 </div>
             </React.Fragment>
@@ -80,10 +122,17 @@ function Square(props) {
             <button 
                 className="square" 
                 onClick={props.onClick}>
-                {props.value}
+                {imgXO(props.value)}
             </button>
         </div>
     );
+}
+
+function imgXO(value) {
+    let source = "./assets/image/" + value + ".png";
+    return (
+        <img className={value} src={source} alt=""></img>
+    )
 }
 
 class Footer extends React.Component {
@@ -111,8 +160,28 @@ ReactDOM.render(App, root)
 
 // #d ===========================================
 
-function winGame(squares) {
+/*  If return
+    - 1 => X go first
+    - 2 => O go first
+    - 'X' => X win
+    - 'O' => O win
+    - 'D' => Draw
+    - null => Continue
+*/
+function gameState(squares, xGoFirst) {
+    // Check who Go first
+    let isBegin = squares.every((value)=>{
+        return (value == null);
+    })
+    if (isBegin && xGoFirst) {
+        return 1;
+    } else if (isBegin && !xGoFirst) {
+        return 2;
+    }
+
+    // Check who Win
     let result = null;
+    
     let winLines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -123,7 +192,6 @@ function winGame(squares) {
         [0, 4, 8],
         [2, 4, 6],
     ]
-    
     winLines.forEach((line)=>{
         let [a, b, c] = line; // Get values by Destructuring
         if ((squares[a]) && (squares[a] == squares[b]) && (squares[b] == squares[c])) {
@@ -136,16 +204,17 @@ function winGame(squares) {
             return (value == null);
         })
         if (!notFull) {
-            result = 'Draw';
+            result = 'D';
         }
     }
 
     return result;
 }
 
+
 ///// todo 1. Win Logic
 // Fix UI :
-//    - Background, Theme
+/////   Background, Theme
 //    - Player score 
 //    - Modal result
 //    - Responsive

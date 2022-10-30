@@ -34,7 +34,7 @@
 }
 
 /* #d ------------ Main-Board -------------- */
-.main-board {
+.game {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -125,9 +125,11 @@
 
 .square .X {
     width: 66px;
+    cursor: pointer;
 }
 .square .O {
     width: 76px;
+    cursor: pointer;
 }
 /* #l ------------ Board -------------- */
 
@@ -139,6 +141,3 @@
     text-align: center;
 }
 /* #l ------------ Footer -------------- */
-
-
-/* #D CHỈNH TIẾP HÌNH O => UI => */
