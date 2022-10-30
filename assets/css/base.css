@@ -1,7 +1,29 @@
 :root {
+    /* #d ---------- COLOR ---------- */
     --white-color : #fff;
+    --background-color : #B7D7E7;
+    --header-color : #115174;
+    --board-color : #77B6D3;
+    --player1-color : #2588B8;
+    --player2-color : #fff;
+    --hover-color : #a0cee6;
+    
 
-    --square-width : 150px;
+    /* #d ---------- SIZE ---------- */
+    --header-height : 80px;
+
+    --square-width : 125px;
     --board-width : calc(var(--square-width) * 3);
+    --inner-border : 4px;
+    --outer-border : 8px;
+    --player-width : 200px;
+    --player-height : 200px;
+    
+    /* #d ---------- FONT ---------- */
+    --header-size : 56px;
+    --status-size : 32px;
+    --player-size : 38px;
+    --score-size : 72px;
+
 
 }

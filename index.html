@@ -4,11 +4,15 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Test React</title>
+        <title>Tic tac toe</title>
         <link rel="stylesheet" href="./assets/css/base.css">
         <link rel="stylesheet" href="./assets/css/grid.css">
         <link rel="stylesheet" href="./assets/css/main.css">
-        <link rel="stylesheet" href="./assets/icon/css/all.min.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
         <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -16,60 +20,85 @@
 
 <!-- #d ######################################################################### -->
     
-    <body style="background-color: salmon; height: 3000px;">
+    <body style="background-color: #B7D7E7; height: 3000px;">
         <div id="root" class="grid wide">
             <!-- #d ------------ Header -------------- -->
-            <!-- <div class="row no-gutters">
+            <div class="row no-gutters">
                 <div id="header" class="col">
                     <p>Tic Tac Toe</p>
-                    <button class="button reset">
-                        <i class="fa-solid fa-rotate-right"></i>
-                    </button>
-                    <button class="button theme">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
                 </div>
-            </div> -->
+            </div>
             <!-- #l ---------- end Header ------------ -->
 
-            <!-- <div class="row no-gutters">
+            <div class="row no-gutters">
                 <div id="status" class="col">
-                    <p>Turn : X</p>
+                    <p>X's turn</p>
                 </div>
-            </div> -->
+            </div>
 
             <!-- #d ------------ Board -------------- -->
-            <!-- <div class="row no-gutters">
+            <div class="row no-gutters main-board">
+                <!-- #d ---------- PLAYER 1 ---------- -->
+                <div id="player1" class="player">
+                    <h3>Player X</h3>
+                    <p id="score1">6</p>
+                </div>
+                
+                <!-- #d ---------- BOARD ---------- -->
                 <div id="board">
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">1</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            <img class="O" src="./assets/image/O.png" alt="">
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">2</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            <img class="X" src="./assets/image/X.png" alt="">
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">3</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">4</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">5</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">6</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">7</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">8</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            
+                        </button>
                     </div>
                     <div class="col">
-                        <button class="square" onclick="console.log(this.innerHTML)">10</button>
+                        <button class="square" onclick="console.log(this.innerHTML)">
+                            
+                        </button>
                     </div>
                 </div>
-            </div> -->
+
+                <!-- #d ---------- PLAYER 2 ---------- -->
+                <div id="player2" class="player">
+                    <h3>Player O</h3>
+                    <p id="score2">6</p>
+                </div>
+            </div>
             <!-- #l ---------- end Board ------------ -->
 
             
@@ -84,7 +113,7 @@
 
         </div>
         
-        <script src="./main.js" type="text/babel"></script>
+        <!-- <script src="./main.js" type="text/babel"></script> -->
 
 
 

@@ -1,27 +1,78 @@
+* {
+        font-family: 'Calibri';
+        font-weight: bold;
+        cursor: default;
+}
+
 /* #d ------------ Header -------------- */
 #header {
-    background-color: #ffffff;
+    background-color: var(--background-color);
     width: 100%;
+    height: var(--header-height);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    align-content: center;
+    position: relative;
 }
+
+#header p {
+    display: inline-block;
+    line-height: var(--header-height);
+    font-size: var(--header-size);
+    color: var(--header-color);
+}
+
 /* #l ------------ Header -------------- */
 
 #status {
     display: flex;
     margin: 0 auto;
     margin-bottom: 20px;
-    font-size: 30px;
+    font-size: var(--status-size);
+    color: var(--header-color);
 }
 
-/* #d ------------ Board -------------- */
+/* #d ------------ Main-Board -------------- */
+.main-board {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/* #d --- PLAYER --- */
+.player {
+    background-color: transparent;
+    width: var(--player-width);
+    height: var(--player-height);
+    text-align: center;
+    border-radius: 22px;
+    margin-bottom: 28px;
+}
+#player1 {
+    border: var(--player1-color) solid var(--outer-border);
+    color: var(--player1-color);
+}
+#player2 {
+    border: var(--player2-color) solid var(--outer-border);
+    color: var(--player2-color);
+}
+.player h3 {
+    line-height: calc(var(--player-height) * 40 / 100);
+    font-size: var(--player-size);
+}
+.player p {
+    line-height: calc(var(--player-height) * 32 / 100);
+    font-size: var(--score-size);
+}
+
 #board {
     display: flex;
-    margin: 0 auto;
     margin-bottom: 20px;
     flex-wrap: wrap;
-    width: calc(var(--square-width) * 3 + 8px);
-    max-width: calc(var(--square-width) * 3 + 8px);
+    width: calc(var(--square-width) * 3);
+    height: calc(var(--square-width) * 3);
+    max-width: calc(var(--square-width) * 3);
+    max-height: calc(var(--square-width) * 3);
 }
 
 #board .col {
@@ -30,42 +81,64 @@
 }
 
 .square {
-    background-color: #fbfbfb;
+    background-color: transparent;
     width: var(--square-width);
     height: var(--square-width);
-    text-align: center;
-    line-height: var(--square-width);
-    border:rgb(31, 28, 26) solid 4px;
-    font-size: 30px;
+    border:var(--board-color) solid var(--inner-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #board .col:nth-child(3n + 1) .square{
-    border-left: rgb(31, 28, 26) solid 8px;
+    border-left: var(--board-color) solid var(--outer-border);
 }
 #board .col:nth-child(3n + 3) .square{
-    border-right: rgb(31, 28, 26) solid 8px;
+    border-right: var(--board-color) solid var(--outer-border);
 }
 #board .col:nth-child(1) .square,
 #board .col:nth-child(2) .square,
 #board .col:nth-child(3) .square {
-    border-top: rgb(31, 28, 26) solid 8px;
+    border-top: var(--board-color) solid var(--outer-border);
 }
 #board .col:nth-child(7) .square,
 #board .col:nth-child(8) .square,
 #board .col:nth-child(9) .square {
-    border-bottom: rgb(31, 28, 26) solid 8px;
+    border-bottom: var(--board-color) solid var(--outer-border);
+}
+#board .col:nth-child(1) .square {
+    border-radius: 25px 0 0 0;
+}
+#board .col:nth-child(3) .square {
+    border-radius: 0 25px 0 0;
+}
+#board .col:nth-child(7) .square {
+    border-radius: 0 0 0 25px;
+}
+#board .col:nth-child(9) .square {
+    border-radius: 0 0 25px 0;
 }
 
 .square:hover {
     cursor: pointer;
-    background-color: rgb(190, 186, 211);
+    background-color: var(--hover-color);
+}
+
+.square .X {
+    width: 66px;
+}
+.square .O {
+    width: 76px;
 }
 /* #l ------------ Board -------------- */
 
 
 /* #d ------------ Footer -------------- */
 #footer {
-    background-color: rgb(190, 182, 175);
+    background-color: rgb(228, 228, 228);
     width: 100%;
     text-align: center;
 }
 /* #l ------------ Footer -------------- */
+
+
+/* #D CHỈNH TIẾP HÌNH O => UI => */
