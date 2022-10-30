@@ -10,7 +10,7 @@
     width: 100%;
     height: var(--header-height);
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     align-items: center;
     align-content: center;
     position: relative;
@@ -28,7 +28,7 @@
 #status {
     display: flex;
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-size: var(--status-size);
     color: var(--header-color);
 }
@@ -65,9 +65,14 @@
     font-size: var(--score-size);
 }
 
+/* Responsive */
+.mobile {
+    display: none;
+}
+
 #board {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     flex-wrap: wrap;
     width: calc(var(--square-width) * 3);
     height: calc(var(--square-width) * 3);

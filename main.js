@@ -137,6 +137,19 @@ class Game extends React.Component {
                         <p id="score2">{this.state.score2}</p>
                     </div>
                 </div>
+                
+                <div className="row no-gutters mobile">
+                    <div id="player-mobile" className="col">
+                        <div id="player-m1" className="player-m">
+                            <h3>Player X</h3>
+                            <p id="score1">{this.state.score1}</p>
+                        </div>
+                        <div id="player-m2" className="player-m">
+                            <h3>Player O</h3>
+                            <p id="score2">{this.state.score2}</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="row no-gutters">
                     <div id="footer" className="col">

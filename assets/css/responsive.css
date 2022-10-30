@@ -1,0 +1,88 @@
+/* #d MOBILE */
+@media (max-width:739px) {
+    :root {
+    /* #d ---------- SIZE ---------- */
+        --header-height : 64px;
+        --square-width : 110px;
+        --board-width : calc(var(--square-width) * 3);
+        --inner-border : 4px;
+        --outer-border : 8px;
+        --player-width : 156px;
+        --player-height : 110px;
+
+        --footer-height : 80px;
+        
+    /* #d ---------- FONT ---------- */
+        --header-size : 50px;
+        --status-size : 32px;
+        --player-size : 30px;
+        --score-size : 50px;
+    }
+
+    .player {
+        display: none;
+    }
+    .mobile {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    #player-mobile {
+        display: flex;
+        justify-content: space-between;
+        width: var(--board-width);
+    }
+    .player-m {
+        background-color: transparent;
+        width: var(--player-width);
+        height: var(--player-height);
+        text-align: center;
+        border-radius: 22px;
+    }
+    #player-m1 {
+        border: var(--player1-color) solid var(--outer-border);
+        color: var(--player1-color);
+    }
+    #player-m2 {
+        border: var(--player2-color) solid var(--outer-border);
+        color: var(--player2-color);
+    }
+    .player-m h3 {
+        line-height: calc(var(--player-height) * 40 / 100);
+        font-size: var(--player-size);
+    }
+    .player-m p {
+        line-height: calc(var(--player-height) * 32 / 100);
+        font-size: var(--score-size);
+    }
+}
+
+/* #d >= TABLET */
+@media (min-width:740px) and (max-width:1023px) {
+    :root {
+    /* #d ---------- SIZE ---------- */
+        --header-height : 60px;
+        --square-width : 110px;
+        --board-width : calc(var(--square-width) * 3);
+        --inner-border : 4px;
+        --outer-border : 8px;
+        --player-width : 160px;
+        --player-height : 160px;
+
+        --footer-height : 80px;
+        
+    /* #d ---------- FONT ---------- */
+        --header-size : 52px;
+        --status-size : 32px;
+        --player-size : 32px;
+        --score-size : 66px;
+    }
+}
+
+/* #d PC */
+@media (min-width:1024px) {
+
+}
+
