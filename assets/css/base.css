@@ -7,17 +7,20 @@
     --player1-color : #2588B8;
     --player2-color : #fff;
     --hover-color : #a0cee6;
+    --reset-color : #123c53;
     
 
     /* #d ---------- SIZE ---------- */
-    --header-height : 80px;
+    --header-height : 66px;
 
-    --square-width : 125px;
+    --square-width : 120px;
     --board-width : calc(var(--square-width) * 3);
     --inner-border : 4px;
     --outer-border : 8px;
-    --player-width : 200px;
-    --player-height : 200px;
+    --player-width : 190px;
+    --player-height : 190px;
+
+    --footer-height : 80px;
     
     /* #d ---------- FONT ---------- */
     --header-size : 56px;

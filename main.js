@@ -12,7 +12,7 @@ class Header extends React.Component {
     }
 }
 
-class Board extends React.Component {
+class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -27,10 +27,12 @@ class Board extends React.Component {
     handleClick(index) {
         let newSquares = [...this.state.squares];
 
-        if (gameState(newSquares) == 'X' || gameState(newSquares) == 'O' || newSquares[index]) {
+        // Anti-click when the square is marked OR the game is finished
+        if (gameState(newSquares) == 'X' || gameState(newSquares) == 'O' || gameState(newSquares) == 'D' || newSquares[index]) {
             return;
         }
 
+        // Set new Squares
         newSquares[index] = this.state.xTurn ? 'X' : 'O';
         this.setState({
             squares : newSquares,
@@ -39,28 +41,44 @@ class Board extends React.Component {
 
         // Update score
         if (gameState(newSquares) == 'X') {
-
-            // #d VIET THỬ MODAL TẠI ĐÂY, APPEND CÁI MODAL ĐÓ VÀO BOARD
-            // #D RESET GAME THỬ BẰNG CÁCH SET ALL this.state.squares về null
-
-
-
-            // #d Phần này sẽ tách ra viết 1 hàm riêng là Update game
-            // #d Trong đó sẽ chạy hàm riêng là Reset game
-            // #d Hàm Resetgame sẽ là 1 cái modal hiện ở giữa cái Board và khi bấm vào sẽ set all to null
             this.setState({
                 score1 : this.state.score1 + 1,
                 xGoFirst : true,
+                xTurn : true,
             });
         } else if (gameState(newSquares) == 'O') {
             this.setState({
                 score2 : this.state.score2 + 1,
                 xGoFirst : false,
+                xTurn : false,
+            });
+        } else if (gameState(newSquares) == 'D') {
+            this.setState({
+                score1 : this.state.score1 + 1,
+                score2 : this.state.score2 + 1,
+                xTurn : this.state.xGoFirst,
             });
         }
     }
+    
+    resetGame() {
+        // Set the squares in state to null
+        let resetSquare = Array(9).fill(null);
+        this.setState({
+            squares : resetSquare,
+        });
+
+        // Change squares to normal color and hide the Reset button
+        let squareCollection = document.getElementsByClassName('square');
+        for (let i = 0; i < 9; i++) {
+            squareCollection[i].style.backgroundColor = "transparent";
+        }
+        let resetBtn = document.querySelector('#footer');
+        resetBtn.style.display = "none";
+    }
 
     render() {
+        // Set Status bar
         let gameStatus = gameState(this.state.squares, this.state.xGoFirst);
         let status;
         if (gameStatus) {
@@ -77,6 +95,9 @@ class Board extends React.Component {
                 case 'O':
                     status = 'O win';
                     break;
+                case 'D':
+                    status = 'Draw';
+                    break;
                 default:
                     console.error("Game status error");
                     break;
@@ -84,8 +105,7 @@ class Board extends React.Component {
         } else {
             status = (this.state.xTurn ? 'X' : 'O') + "'s turn";
         }
-        // console.log(this.state)
-        
+
         return (
             <React.Fragment>
                 <div className="row no-gutters">
@@ -117,6 +137,16 @@ class Board extends React.Component {
                         <p id="score2">{this.state.score2}</p>
                     </div>
                 </div>
+
+                <div className="row no-gutters">
+                    <div id="footer" className="col">
+                        <button 
+                            className="button reset"
+                            onClick={()=>{this.resetGame()}}>
+                            <img src="./assets/image/reset.png" alt=""/>
+                        </button>
+                    </div>
+                </div>
             </React.Fragment>
         )
     }
@@ -144,24 +174,11 @@ function imgXO(value) {
     )
 }
 
-class Footer extends React.Component {
-    render() {
-        return (
-            <div className="row no-gutters">
-                <div id="footer" className="col">
-                    <h1>THIS IS FOOTER</h1>
-                </div>
-            </div>
-        )
-    }
-}
-
 
 const App = (
     <React.Fragment>
         <Header/>
-        <Board/>
-        {/* <Footer/> */}
+        <Game/>
     </React.Fragment>
 )
 
@@ -213,6 +230,9 @@ function gameState(squares, xGoFirst) {
             squareA.style.backgroundColor = "#123c53";
             squareB.style.backgroundColor = "#123c53";
             squareC.style.backgroundColor = "#123c53";
+
+            let resetBtn = document.querySelector('#footer');
+            resetBtn.style.display = "flex";
         }
     })
     
@@ -222,6 +242,9 @@ function gameState(squares, xGoFirst) {
         })
         if (!notFull) {
             result = 'D';
+
+            let resetBtn = document.querySelector('#footer');
+            resetBtn.style.display = "flex";
         }
     }
 
@@ -233,9 +256,7 @@ function gameState(squares, xGoFirst) {
 // Fix UI :
 ////    Background, Theme
 ////    Player score 
-//    - Modal result
+////    Modal result
 //    - Responsive
-
-// todo 3. Change color the win line
-// todo 5. Local storage score
+////    Change color the win line
 
