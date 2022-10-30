@@ -39,6 +39,15 @@ class Board extends React.Component {
 
         // Update score
         if (gameState(newSquares) == 'X') {
+
+            // #d VIET THỬ MODAL TẠI ĐÂY, APPEND CÁI MODAL ĐÓ VÀO BOARD
+            // #D RESET GAME THỬ BẰNG CÁCH SET ALL this.state.squares về null
+
+
+
+            // #d Phần này sẽ tách ra viết 1 hàm riêng là Update game
+            // #d Trong đó sẽ chạy hàm riêng là Reset game
+            // #d Hàm Resetgame sẽ là 1 cái modal hiện ở giữa cái Board và khi bấm vào sẽ set all to null
             this.setState({
                 score1 : this.state.score1 + 1,
                 xGoFirst : true,
@@ -54,8 +63,6 @@ class Board extends React.Component {
     render() {
         let gameStatus = gameState(this.state.squares, this.state.xGoFirst);
         let status;
-        let score1_ = this.state.score1;
-        let score2_ = this.state.score2;
         if (gameStatus) {
             switch (gameStatus) {
                 case 1:
@@ -66,19 +73,18 @@ class Board extends React.Component {
                     break;
                 case 'X':
                     status = 'X win';
-                    // score1_ = score1_ + 1;
                     break;
                 case 'O':
                     status = 'O win';
                     break;
                 default:
-                    console.log("Game status error");
+                    console.error("Game status error");
                     break;
             }
         } else {
             status = (this.state.xTurn ? 'X' : 'O') + "'s turn";
         }
-        console.log(this.state)
+        // console.log(this.state)
         
         return (
             <React.Fragment>
@@ -129,6 +135,9 @@ function Square(props) {
 }
 
 function imgXO(value) {
+    if (!value) {
+        return;
+    }
     let source = "./assets/image/" + value + ".png";
     return (
         <img className={value} src={source} alt=""></img>
@@ -152,7 +161,7 @@ const App = (
     <React.Fragment>
         <Header/>
         <Board/>
-        <Footer/>
+        {/* <Footer/> */}
     </React.Fragment>
 )
 
@@ -196,6 +205,14 @@ function gameState(squares, xGoFirst) {
         let [a, b, c] = line; // Get values by Destructuring
         if ((squares[a]) && (squares[a] == squares[b]) && (squares[b] == squares[c])) {
             result = squares[a];
+            
+            // Set Color of win line
+            let squareA = document.querySelector('#board .col:nth-child(' + (a+1) + ') .square');
+            let squareB = document.querySelector('#board .col:nth-child(' + (b+1) + ') .square');
+            let squareC = document.querySelector('#board .col:nth-child(' + (c+1) + ') .square');
+            squareA.style.backgroundColor = "#123c53";
+            squareB.style.backgroundColor = "#123c53";
+            squareC.style.backgroundColor = "#123c53";
         }
     })
     
@@ -214,8 +231,8 @@ function gameState(squares, xGoFirst) {
 
 ///// todo 1. Win Logic
 // Fix UI :
-/////   Background, Theme
-//    - Player score 
+////    Background, Theme
+////    Player score 
 //    - Modal result
 //    - Responsive
 
