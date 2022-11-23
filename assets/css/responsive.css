@@ -8,7 +8,7 @@
         --inner-border : 4px;
         --outer-border : 8px;
         --player-width : 156px;
-        --player-height : 120px;
+        --player-height : 110px;
 
         --footer-height : 80px;
         
@@ -16,7 +16,7 @@
         --header-size : 50px;
         --status-size : 32px;
         --player-size : 30px;
-        --score-size : 44px;
+        --score-size : 50px;
     }
 
     .player {
@@ -27,7 +27,7 @@
         justify-content: center;
         width: 100%;
         margin-top: 8px;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
     #player-mobile {
         display: flex;
@@ -54,7 +54,7 @@
         font-size: var(--player-size);
     }
     .player-m p {
-        line-height: calc(var(--player-height) * 30 / 100);
+        line-height: calc(var(--player-height) * 32 / 100);
         font-size: var(--score-size);
     }
 }
