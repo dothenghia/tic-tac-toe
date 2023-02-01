@@ -1,0 +1,10 @@
+#header {
+    height: var(--header-height);
+    text-align: center;
+    
+    & p {
+    line-height: var(--header-height);
+    font-size: var(--header-size);
+    color: var(--header-color);
+    }
+}

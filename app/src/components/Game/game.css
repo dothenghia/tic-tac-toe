@@ -1,0 +1,19 @@
+
+#status {
+    text-align: center;
+    font-size: var(--status-size);
+    color: var(--header-color);
+}
+
+.play-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width:767px) {
+    .play-section {
+        max-width: var(--board-width);
+        flex-wrap: wrap;
+    }
+}

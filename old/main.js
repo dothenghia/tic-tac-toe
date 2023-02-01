@@ -1,4 +1,3 @@
-let root = document.getElementById('root');
 
 class Header extends React.Component {
     render() {
@@ -84,10 +83,10 @@ class Game extends React.Component {
         if (gameStatus) {
             switch (gameStatus) {
                 case 1:
-                    status = 'X go first';
+                    status = 'X first';
                     break;
                 case 2:
-                    status = 'O go first';
+                    status = 'O first';
                     break;
                 case 'X':
                     status = 'X win';
@@ -195,7 +194,9 @@ const App = (
     </React.Fragment>
 )
 
-ReactDOM.render(App, root)
+// React@18 Rendering Element
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(App);
 
 // #d ===========================================
 

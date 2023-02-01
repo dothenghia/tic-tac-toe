@@ -1,0 +1,38 @@
+.player {
+    width: var(--player-width);
+    height: var(--player-height);
+    text-align: center;
+    border-radius: 22px;
+    margin-bottom: 28px;
+    
+    & h1 {
+        line-height: calc(var(--player-height) * 40 / 100);
+        font-weight: bold;
+        font-size: var(--player-size);
+    }
+    & p {
+        line-height: calc(var(--player-height) * 32 / 100);
+        font-size: var(--score-size);
+    }
+}
+
+#playerX {
+    border: var(--player1-color) solid var(--player-border);
+    color: var(--player1-color);
+}
+#playerO {
+    border: var(--player2-color) solid var(--player-border);
+    color: var(--player2-color);
+}
+
+@media screen and (max-width:767px) {
+    .player {
+        margin-top: 10px;
+    }
+    #playerX {
+        order: 2;
+    }
+    #playerO {
+        order: 3;
+    }
+}

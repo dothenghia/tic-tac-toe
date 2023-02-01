@@ -1,0 +1,100 @@
+#board {
+    width: calc(var(--square-width) * 3);
+    height: calc(var(--square-width) * 3);
+    max-width: calc(var(--square-width) * 3);
+    max-height: calc(var(--square-width) * 3);
+    
+    display: flex;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.square {
+    max-width: var(--square-width);
+    width: var(--square-width);
+    height: var(--square-width);
+    
+    background-color: transparent;
+    border:var(--board-color) solid var(--inner-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--hover-color);
+    }
+
+    &.win {
+        background-color: #123c53 !important;
+    }
+    
+    & .X {
+        width: 68px;
+        cursor: pointer;
+        user-select: none;
+    }
+    & .O {
+        width: 76px;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    
+    &:nth-child(3n + 1) {
+        border-left: var(--board-color) solid var(--outer-border);
+    }
+    &:nth-child(3n + 3) {
+        border-right: var(--board-color) solid var(--outer-border);
+    }
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+        border-top: var(--board-color) solid var(--outer-border);
+    }
+    &:nth-child(7),
+    &:nth-child(8),
+    &:nth-child(9) {
+        border-bottom: var(--board-color) solid var(--outer-border);
+    }
+    &:nth-child(1) {
+        border-radius: 25px 0 0 0;
+    }
+    &:nth-child(3) {
+        border-radius: 0 25px 0 0;
+    }
+    &:nth-child(7) {
+        border-radius: 0 0 0 25px;
+    }
+    &:nth-child(9) {
+        border-radius: 0 0 25px 0;
+    }
+}
+
+@media screen and (max-width:767px) {
+    #board {
+        order: 1;
+    }
+
+    .square {
+        & .X {
+            width: 60px;
+        }
+        & .O {
+            width: 70px;
+        }
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .square {
+        & .X {
+            width: 64px;
+        }
+        & .O {
+            width: 74px;
+        }
+    }
+}
