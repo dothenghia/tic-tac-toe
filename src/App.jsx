@@ -12,14 +12,4 @@ const App = () => {
     );
 };
 
-// import Test from './components/Test/Test'
-
-// const App = () => {
-//     return (
-//         <div id="app" className='container'>
-//             <Test/>
-//         </div>
-//     )
-// }
-
 export default App;

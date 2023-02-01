@@ -2,7 +2,8 @@
 
 A simple project written in **ReactJS**.
 
-_Visit the website at : https://dothenghia.github.io/tic-tac-toe/_
+_Visit the live site at : https://dothenghia.github.io/tic-tac-toe/_
+
 
 ## Preview
 
@@ -17,4 +18,3 @@ _Visit the website at : https://dothenghia.github.io/tic-tac-toe/_
 ### In Mobile version
 
 <p> <img align="left" width="46%" src="https://user-images.githubusercontent.com/63101932/198880446-c02ca2f5-43f3-490e-812e-abd98b3e5caa.jpg"> <img align="right" width="46%" src="https://user-images.githubusercontent.com/63101932/198880465-a6931f31-0f3a-4231-9502-21c1d4f3d55e.jpg"> </p>
-

@@ -6,7 +6,7 @@ const ResetButton = ({ resetClick }) => {
 	return (
 		<div id="reset">
 			<button 
-				className="reset"
+				className="reset-button"
 				onClick={resetClick}
 			>
 				<img src={resetBtn} alt="Reset Button"/>
